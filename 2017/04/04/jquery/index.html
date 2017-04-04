@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      jquery | Vnnyu 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Donghao Li">
+    
+    
+
+    <meta name="description" content="Jquery 选择器最近写项目的前端部分，用到Jquery，学习一下。
+Jquery 选择器传统Js是获取DOM对象：  
+1var div = document.getElementById(&amp;quot;Div&amp;quot;);
+Jquery 用选择器：  
+1var jQueryObject = $(&amp;quot;#Div&amp;quot;); #根据id选择
+常用有以下几种类型：
+12345$(&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery | Vnnyu">
+<meta property="og:url" content="https://vnnyu.com/2017/04/04/jquery/index.html">
+<meta property="og:site_name" content="Vnnyu">
+<meta property="og:description" content="Jquery 选择器最近写项目的前端部分，用到Jquery，学习一下。
+Jquery 选择器传统Js是获取DOM对象：  
+1var div = document.getElementById(&amp;quot;Div&amp;quot;);
+Jquery 用选择器：  
+1var jQueryObject = $(&amp;quot;#Div&amp;quot;); #根据id选择
+常用有以下几种类型：
+12345$(&amp;qu">
+<meta property="og:updated_time" content="2017-04-04T15:27:33.546Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery | Vnnyu">
+<meta name="twitter:description" content="Jquery 选择器最近写项目的前端部分，用到Jquery，学习一下。
+Jquery 选择器传统Js是获取DOM对象：  
+1var div = document.getElementById(&amp;quot;Div&amp;quot;);
+Jquery 用选择器：  
+1var jQueryObject = $(&amp;quot;#Div&amp;quot;); #根据id选择
+常用有以下几种类型：
+12345$(&amp;qu">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Vnnyu</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          莫负好时光。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/Vnnyu" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-rweichat'></i>
+          <span class="label">WeChat</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">jquery</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-04-04" class="post-meta__date date">2017-04-04</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h1 id="Jquery-选择器"><a href="#Jquery-选择器" class="headerlink" title="Jquery 选择器"></a>Jquery 选择器</h1><p>最近写项目的前端部分，用到Jquery，学习一下。</p>
+<h2 id="Jquery-选择器-1"><a href="#Jquery-选择器-1" class="headerlink" title="Jquery 选择器"></a>Jquery 选择器</h2><p>传统Js是获取DOM对象：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var div = document.getElementById(&quot;Div&quot;);</div></pre></td></tr></table></figure>
+<p>Jquery 用选择器：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var jQueryObject = $(&quot;#Div&quot;); #根据id选择</div></pre></td></tr></table></figure>
+<p>常用有以下几种类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(&quot;#ID&quot;) #选择id为“ID”的元素</div><div class="line">$(&quot;a&quot;)  #选择所有的&lt;a&gt;标签</div><div class="line">$(&quot;.Navbar&quot;) #选择所有CSS为“Navbar”的元素</div><div class="line">$(&quot;*&quot;)  #选择所有元素</div><div class="line">#可以用&quot;,&quot;分隔开，会同时选中所有的</div></pre></td></tr></table></figure>
+<h2 id="Jquery-事件"><a href="#Jquery-事件" class="headerlink" title="Jquery 事件"></a>Jquery 事件</h2><p>为ID为 btn_connect 的按钮绑定一个事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function()&#123;</div><div class="line">  $(&quot;#btn_connect&quot;).click(function () &#123;</div><div class="line">        $(&quot;div#begin1&quot;).show();</div><div class="line">    &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>常用的有以下几种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.click #点击事件</div><div class="line">.dblclick #双击事件</div><div class="line">.focus #焦点事件</div><div class="line">.mouseover #鼠标悬停事件</div></pre></td></tr></table></figure>
+<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><p>前端请求JSON  (.getJSON)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$(&quot;#button1&quot;).click(function () &#123;</div><div class="line">        var data = &quot;action=getlink&quot;;</div><div class="line">        $.getJSON(&quot;server.php&quot;,data,function (json) &#123;</div><div class="line">            $(&quot;#phone_id&quot;).html(json.phone_id);</div><div class="line">            $(&quot;#phone_brand&quot;).html(json.phone_brand);</div><div class="line">            $(&quot;#phone_model&quot;).html(json.phone_model);</div><div class="line">        &#125;)</div><div class="line">    &#125;)</div></pre></td></tr></table></figure></p>
+<p>后端PHP 用 json_encode()发送JSON:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$action = $_GET[&apos;action&apos;];</div><div class="line">$id = $_GET[&apos;id&apos;];</div><div class="line">if ($action == &quot;getlink&quot;)</div><div class="line">&#123;</div><div class="line">    $result = GetPhoneInfo();</div><div class="line">    echo json_encode($result); //</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>暂时用到这么多，后面用到再学习总结。</p>
+
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016-2017. | Vnnyu@vnnyu.com | Donghao Li </a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
