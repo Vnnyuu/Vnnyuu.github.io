@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      排序算法总结 | Vnnyu 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Donghao Li">
+    
+    
+
+    <meta name="description" content="分类：一.交换排序(冒泡排序、快速排序)二.插入排序(直接插入排序、希尔排序)三.选择排序(简单选择排序、堆排序)四.归并排序
+交换排序(冒泡排序、快速排序)冒泡排序O(n) – O(n^2) – O(n^2) 从头开始两两比较，如果前面比后面大就交换，让较大的数向下沉，较小的数向上冒。改进: 设置一个flag,检测这一趟有没有发生交换，如果没发生交换说明已经排序完毕了。
+快速排序O(nlog2n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法总结 | Vnnyu">
+<meta property="og:url" content="https://vnnyu.com/2017/04/07/sort/index.html">
+<meta property="og:site_name" content="Vnnyu">
+<meta property="og:description" content="分类：一.交换排序(冒泡排序、快速排序)二.插入排序(直接插入排序、希尔排序)三.选择排序(简单选择排序、堆排序)四.归并排序
+交换排序(冒泡排序、快速排序)冒泡排序O(n) – O(n^2) – O(n^2) 从头开始两两比较，如果前面比后面大就交换，让较大的数向下沉，较小的数向上冒。改进: 设置一个flag,检测这一趟有没有发生交换，如果没发生交换说明已经排序完毕了。
+快速排序O(nlog2n">
+<meta property="og:updated_time" content="2017-04-07T14:59:20.513Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法总结 | Vnnyu">
+<meta name="twitter:description" content="分类：一.交换排序(冒泡排序、快速排序)二.插入排序(直接插入排序、希尔排序)三.选择排序(简单选择排序、堆排序)四.归并排序
+交换排序(冒泡排序、快速排序)冒泡排序O(n) – O(n^2) – O(n^2) 从头开始两两比较，如果前面比后面大就交换，让较大的数向下沉，较小的数向上冒。改进: 设置一个flag,检测这一趟有没有发生交换，如果没发生交换说明已经排序完毕了。
+快速排序O(nlog2n">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Vnnyu</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          莫负好时光。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/Vnnyu" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-rweichat'></i>
+          <span class="label">WeChat</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">排序算法总结</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-04-07" class="post-meta__date date">2017-04-07</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/基本功/">基本功</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><p>一.交换排序(冒泡排序、快速排序)<br>二.插入排序(直接插入排序、希尔排序)<br>三.选择排序(简单选择排序、堆排序)<br>四.归并排序</p>
+<h3 id="交换排序-冒泡排序、快速排序"><a href="#交换排序-冒泡排序、快速排序" class="headerlink" title="交换排序(冒泡排序、快速排序)"></a>交换排序(冒泡排序、快速排序)</h3><h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>O(n) – O(n^2) – O(n^2)<br> 从头开始两两比较，如果前面比后面大就交换，让较大的数向下沉，较小的数向上冒。<br>改进: 设置一个flag,检测这一趟有没有发生交换，如果没发生交换说明已经排序完毕了。</p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>O(nlog2n) – O(n^2)： 不稳定<br>快速排序是一个不稳定的方法。<br>如果初始状态下有序或基本有序，快速排序其实就是冒泡排序。<br>但当初始状态是随机分布时，快速排序的平均时间最短。 </p>
+<p>1.先选出一个基准数<br>2.第一次排列，比基准数小的在基准数的前面，比基准数大的放在基准数的后面（分区操作）<br>3.被分的区再次进行步骤1.2，直到有序。</p>
+<h3 id="插入排序-直接插入排序、希尔排序"><a href="#插入排序-直接插入排序、希尔排序" class="headerlink" title="插入排序(直接插入排序、希尔排序)"></a>插入排序(直接插入排序、希尔排序)</h3><h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p>O(n^2) – O(n^2) : 稳定<br>在少量数据下是个不错的选择，在STL的sort算法和stdlib的qsort算法中，都将插入排序作为快速排序的补充，用于少量元素的排序(&lt;=8)  </p>
+<p>1.取第一个元素<br>2.取下一个元素，在已排序的序列中从后向前扫描<br>3.如果序列中的某元素大于新元素，则后移一位<br>4.重复3，直到找到序列中的元素小于或等于新元素<br>5.将新元素插入到该元素后面<br>6.重复2~5步，直到序列有序  </p>
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><p>不稳定<br>1.选取一个小于序列长度的数作为第一个增量，将序列分成若干组。<br>2.每组数内部进行排序。<br>3.取小于第一个增量的第二个增量，重复。<br>4.直到所取的增量为1，进行一次直接插入排序。  </p>
+<h3 id="选择排序-简单选择排序、堆排序"><a href="#选择排序-简单选择排序、堆排序" class="headerlink" title="选择排序(简单选择排序、堆排序)"></a>选择排序(简单选择排序、堆排序)</h3><h4 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h4><p>O(n^2) – O(n^2) : 稳定<br>在要排序的一组数中，选出最小的一个数与第1个位置的数交换；然后在剩下的数当中再找最小的与第2个位置的数交换，依次类推，直到第n-1个元素和第n个元素比较为止。   </p>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>O(nlog2n) :不稳定<br>堆排序是一种树形选择排序，是对直接选择排序的有效改进。<br>堆顶元素（第一个元素）必为最小项。<br>堆排序需要两个过程：建堆 和 输出堆顶后剩下元素的调整。  </p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>稳定<br>是分治法的应用。<br>将两个（及以上）有序表合并成一个新的有序表，即把待排序序列分为若干个子序列，每个子序列是有序的。然后再把有序子序列合并为整体有序序列。</p>
+
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016-2017. | Vnnyu@vnnyu.com | Donghao Li </a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
