@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      机器学习综述 | Vnnyu 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Donghao Li">
+    
+    
+
+    <meta name="description" content="监督学习这类算法必须知道预测什么，即目标变量的分类信息。我们给 学习算法 一个数据集（正样本），这个数据集由“正确答案”组成，机器可以从中推演出制定目标变量的可能结果。  
+分类问题将实例数据划分到合适的分类中。例如：肿瘤检测问题。
+回归问题预测数值型数据。例如：房价问题。
+
+监督学习算法（后面学到再补充一个简短的介绍）：
+K-近邻算法朴素贝叶斯算法支持向量机决策树线性回归局部加权线性回归Ridg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习综述 | Vnnyu">
+<meta property="og:url" content="https://vnnyu.com/2017/04/26/ml-01/index.html">
+<meta property="og:site_name" content="Vnnyu">
+<meta property="og:description" content="监督学习这类算法必须知道预测什么，即目标变量的分类信息。我们给 学习算法 一个数据集（正样本），这个数据集由“正确答案”组成，机器可以从中推演出制定目标变量的可能结果。  
+分类问题将实例数据划分到合适的分类中。例如：肿瘤检测问题。
+回归问题预测数值型数据。例如：房价问题。
+
+监督学习算法（后面学到再补充一个简短的介绍）：
+K-近邻算法朴素贝叶斯算法支持向量机决策树线性回归局部加权线性回归Ridg">
+<meta property="og:updated_time" content="2017-04-26T03:05:07.122Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习综述 | Vnnyu">
+<meta name="twitter:description" content="监督学习这类算法必须知道预测什么，即目标变量的分类信息。我们给 学习算法 一个数据集（正样本），这个数据集由“正确答案”组成，机器可以从中推演出制定目标变量的可能结果。  
+分类问题将实例数据划分到合适的分类中。例如：肿瘤检测问题。
+回归问题预测数值型数据。例如：房价问题。
+
+监督学习算法（后面学到再补充一个简短的介绍）：
+K-近邻算法朴素贝叶斯算法支持向量机决策树线性回归局部加权线性回归Ridg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Vnnyu</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          莫负好时光。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/Vnnyu" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-rweichat'></i>
+          <span class="label">WeChat</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">机器学习综述</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-04-26" class="post-meta__date date">2017-04-26</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/机器学习/">机器学习</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h3><p>这类算法必须知道预测什么，即目标变量的分类信息。<br>我们给 学习算法 一个数据集（正样本），这个数据集由“正确答案”组成，机器可以从中推演出制定目标变量的可能结果。  </p>
+<h4 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h4><p>将实例数据划分到合适的分类中。例如：肿瘤检测问题。</p>
+<h4 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h4><p>预测数值型数据。例如：房价问题。</p>
+<hr>
+<h4 id="监督学习算法"><a href="#监督学习算法" class="headerlink" title="监督学习算法"></a>监督学习算法</h4><p>（后面学到再补充一个简短的介绍）：</p>
+<h5 id="K-近邻算法"><a href="#K-近邻算法" class="headerlink" title="K-近邻算法"></a>K-近邻算法</h5><h5 id="朴素贝叶斯算法"><a href="#朴素贝叶斯算法" class="headerlink" title="朴素贝叶斯算法"></a>朴素贝叶斯算法</h5><h5 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h5><h5 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h5><h5 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h5><h5 id="局部加权线性回归"><a href="#局部加权线性回归" class="headerlink" title="局部加权线性回归"></a>局部加权线性回归</h5><h5 id="Ridge回归"><a href="#Ridge回归" class="headerlink" title="Ridge回归"></a>Ridge回归</h5><h5 id="Lasso最小回归系数估计"><a href="#Lasso最小回归系数估计" class="headerlink" title="Lasso最小回归系数估计"></a>Lasso最小回归系数估计</h5><hr>
+<h3 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a>无监督学习</h3><p>数据没有类别信息。也不会给定目标值。</p>
+<h4 id="聚类问题"><a href="#聚类问题" class="headerlink" title="聚类问题"></a>聚类问题</h4><p>降数据集合分成由类似的对象组成的多个类的过程。</p>
+<h4 id="密度估计"><a href="#密度估计" class="headerlink" title="密度估计"></a>密度估计</h4><p>寻找描述数据统计值的过程</p>
+<h4 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h4><p>减少数据特征的维度。</p>
+<hr>
+<h4 id="无监督学习算法"><a href="#无监督学习算法" class="headerlink" title="无监督学习算法"></a>无监督学习算法</h4><h5 id="K-均值"><a href="#K-均值" class="headerlink" title="K-均值"></a>K-均值</h5><h5 id="最大期望值算法"><a href="#最大期望值算法" class="headerlink" title="最大期望值算法"></a>最大期望值算法</h5><h5 id="DBSCAN"><a href="#DBSCAN" class="headerlink" title="DBSCAN"></a>DBSCAN</h5><h5 id="Parzen窗设计"><a href="#Parzen窗设计" class="headerlink" title="Parzen窗设计"></a>Parzen窗设计</h5><hr>
+<h3 id="算法如何选择"><a href="#算法如何选择" class="headerlink" title="算法如何选择"></a>算法如何选择</h3><h4 id="明确目的"><a href="#明确目的" class="headerlink" title="明确目的"></a>明确目的</h4><p>预测目标变量值 —&gt;监督学习  </p>
+<p>确定目标变量类型 :<br>离散型（{是，否}、{男，女}）—-&gt;分类算法;<br>连续型（{0.0 ~ 100.0}、{-512 ~ 511}）—-&gt;回归算法;</p>
+<p>不许预测目标变量值 —&gt;无监督学习<br>只需将数据划分为离散的组 —-&gt;聚类算法;<br>还需估计数据与每个分组的相似程度 —-&gt; 密度估计算法。</p>
+<hr>
+<h3 id="解决问题的步骤"><a href="#解决问题的步骤" class="headerlink" title="解决问题的步骤"></a>解决问题的步骤</h3><h4 id="1-收集数据"><a href="#1-收集数据" class="headerlink" title="1.收集数据"></a>1.收集数据</h4><p>收集数据样本。</p>
+<h4 id="2-处理数据"><a href="#2-处理数据" class="headerlink" title="2.处理数据"></a>2.处理数据</h4><p>确保数据格式符合要求，为算法准备特定的数据格式。</p>
+<h4 id="3-分析输入数据"><a href="#3-分析输入数据" class="headerlink" title="3.分析输入数据"></a>3.分析输入数据</h4><p>确保数据集中没有垃圾数据。</p>
+<h4 id="4-训练算法"><a href="#4-训练算法" class="headerlink" title="4.训练算法"></a>4.训练算法</h4><p>跑算法，将前三步得到的数据输入到算法中，从中抽取知识或信息。<br>无监督学习没有前三步。</p>
+<h4 id="5-测试算法"><a href="#5-测试算法" class="headerlink" title="5.测试算法"></a>5.测试算法</h4><p>实际使用前四步得到的知识信息。测试算法的工作效果。<br>如果效果不尽人意，需要调到前几步进行。</p>
+<h4 id="6-使用算法"><a href="#6-使用算法" class="headerlink" title="6.使用算法"></a>6.使用算法</h4><p>将算法实用化。</p>
+
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016-2017. | Vnnyu@vnnyu.com | Donghao Li </a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
