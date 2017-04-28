@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      机器学习02——kNN | Vnnyu 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Donghao Li">
+    
+    
+
+    <meta name="description" content="简述k-近邻算法（kNN,k-Nearest Neighbor）采用测量不同特征值之间的距离方法进行分类。
+
+
+
+–
+kNN
+
+
+
+
+优点
+精度高、对异常值不敏感、无输入数据假定
+
+
+缺点
+计算复杂度、空间复杂度高
+
+
+适用
+数值型、标称型
+
+
+
+原理存在一个样本数据集合（即训练样本集），并且样本集中每个数据都存在标签，即我们知道样本集中每一数据与所属分类的对应关系。输入没有标签的新数据后，将新数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习02——kNN | Vnnyu">
+<meta property="og:url" content="https://vnnyu.com/2017/04/28/ml-02/index.html">
+<meta property="og:site_name" content="Vnnyu">
+<meta property="og:description" content="简述k-近邻算法（kNN,k-Nearest Neighbor）采用测量不同特征值之间的距离方法进行分类。
+
+
+
+–
+kNN
+
+
+
+
+优点
+精度高、对异常值不敏感、无输入数据假定
+
+
+缺点
+计算复杂度、空间复杂度高
+
+
+适用
+数值型、标称型
+
+
+
+原理存在一个样本数据集合（即训练样本集），并且样本集中每个数据都存在标签，即我们知道样本集中每一数据与所属分类的对应关系。输入没有标签的新数据后，将新数">
+<meta property="og:updated_time" content="2017-04-28T14:47:15.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习02——kNN | Vnnyu">
+<meta name="twitter:description" content="简述k-近邻算法（kNN,k-Nearest Neighbor）采用测量不同特征值之间的距离方法进行分类。
+
+
+
+–
+kNN
+
+
+
+
+优点
+精度高、对异常值不敏感、无输入数据假定
+
+
+缺点
+计算复杂度、空间复杂度高
+
+
+适用
+数值型、标称型
+
+
+
+原理存在一个样本数据集合（即训练样本集），并且样本集中每个数据都存在标签，即我们知道样本集中每一数据与所属分类的对应关系。输入没有标签的新数据后，将新数">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Vnnyu</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          莫负好时光。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/Vnnyu" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-rweichat'></i>
+          <span class="label">WeChat</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">机器学习02——kNN</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-04-28" class="post-meta__date date">2017-04-28</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/机器学习/">机器学习</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>k-近邻算法（kNN,k-Nearest Neighbor）<br>采用测量不同特征值之间的距离方法进行分类。</p>
+<table>
+<thead>
+<tr>
+<th>–</th>
+<th>kNN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>优点</td>
+<td>精度高、对异常值不敏感、无输入数据假定</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>计算复杂度、空间复杂度高</td>
+</tr>
+<tr>
+<td>适用</td>
+<td>数值型、标称型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>存在一个样本数据集合（即训练样本集），并且样本集中每个数据都存在<strong>标签</strong>，即我们知道样本集中每一<strong>数据</strong>与<strong>所属分类</strong>的对应关系。<br>输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据（即最近邻）的分类标签。<br>一般来说，我们只选择样本数据集中前k个最相似的数据，这就是kNN的k。通常k是不大于20的整数。<br>最后，选择k个最相似数据中出现次数最多的分类，作为新数据的分类。</p>
+<h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>对未知类别属性的数据集中的每个点依次执行以下操作：<br>1）计算已知类别数据集中的点与当前点之间的距离。<br>2）按照距离递增次序排序。<br>3）选取与当前点距离最小的k个点。<br>4）确定前k个点所在类别的出现频率。<br>5）返回前k个点出现频率最高的类别作为当前点的预测分类。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>依赖实例，必须有接近实际数据的训练集。</li>
+<li>必须保存全部数据集，占用存储空间。</li>
+<li>要对数据集中每个数据计算距离，耗时。</li>
+<li>无法给出任何数据的基础结构信息（内在含义），导致无法知晓平均实例样本和典型实例样本具有什么特征。</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">def classify0(inX,dataSet,labels,k):</div><div class="line"></div><div class="line">    # ----------1.距离计算 这里用的是欧式距离----------</div><div class="line">    dataSetSize = dataSet.shape[0]                  #数据集大小</div><div class="line">    diffMat = tile(inX,(dataSetSize,1)) - dataSet   #tile(A,B) :A的第一个维度重复B遍</div><div class="line">    sqDiffMat = diffMat**2                          #平方</div><div class="line">    sqDistances = sqDiffMat.sum(axis=1)             #sum默认axis=0,即普通加，axis=1时是矩阵一行相加</div><div class="line">    distances = sqDistances**0.5                    #开根号，得到距离</div><div class="line"></div><div class="line">    #----------2.选择距离最小的k个点----------</div><div class="line">    sortedDistIndicies = distances.argsort()        #argsort() : 返回数组从小到大的 索引值</div><div class="line">    classCount = &#123;&#125;</div><div class="line">    for i in range(k):</div><div class="line">        voteIlabel = labels[sortedDistIndicies[i]]</div><div class="line">        classCount[voteIlabel] = classCount.get(voteIlabel,0)+1</div><div class="line"></div><div class="line">    #------------3.排序----------</div><div class="line">    sortedClassCount = sorted(classCount.iteritems(),key=operator.itemgetter(1),reverse=True)</div><div class="line">    #将classCount字典分解为元组列表，然后使用operator模块的itemegetter方法，按照第二个元素的次序对元组进行排序</div><div class="line">    #此处排序为逆序</div><div class="line">    return sortedClassCount[0][0]    #返回发生频率最高的元素标签</div></pre></td></tr></table></figure>
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016-2017. | Vnnyu@vnnyu.com | Donghao Li </a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
