@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="Vnnyu">
 <meta property="og:description" content="简述决策树是基于树结构  来进行决策的，就像带有终止块的流程图，终止块表示分类结果。– | 决策树—|—优点|计算复杂度不高，输出结果易于理解。对中间值缺失不敏感，可以处理不相关特征数据缺点|可能会产生过度匹配问题适用|数值型、标称型
 原理一颗决策树包含++一个根结点、若干内部结点、若干叶子结点++。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集合根据属性测试的结果被划分">
-<meta property="og:updated_time" content="2017-04-29T05:56:57.277Z">
+<meta property="og:updated_time" content="2017-04-29T06:11:50.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习03——决策树 | Vnnyu">
 <meta name="twitter:description" content="简述决策树是基于树结构  来进行决策的，就像带有终止块的流程图，终止块表示分类结果。– | 决策树—|—优点|计算复杂度不高，输出结果易于理解。对中间值缺失不敏感，可以处理不相关特征数据缺点|可能会产生过度匹配问题适用|数值型、标称型
@@ -220,14 +220,9 @@ classes that you can use:
 <h2 id="信息增益（information-gain）"><a href="#信息增益（information-gain）" class="headerlink" title="信息增益（information gain）"></a>信息增益（information gain）</h2><p>划分数据集之前之后信息发生的变化称为<strong>信息增益</strong>。<br>信息增益最高的特征就是最好的选择。<br>集合信息的度量方式为<strong>香浓熵</strong>（简称 熵 entropy）。</p>
 <h4 id="公式："><a href="#公式：" class="headerlink" title="公式："></a>公式：</h4><p>如果待分类的食物可能划分在多个分类中，定义符号$ p(x_i) $  为选择该分类的概率  </p>
 <ul>
-<li>公式1：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">l(x_i) = -log_2 p(x_i)</div></pre></td></tr></table></figure>
-</li>
+<li>公式1：<br>\(<br>l(x_i) = -log_2 p(x_i)<br>\)<br>计算熵值要计算所有类别所有可能值包含的信息期望值（n是分类的数目）  </li>
+<li>公式2：<br>\(<br>H = -\sum_{i=1}^n p(x_i)log_2p(x_i)<br>\)</li>
 </ul>
-<p>计算熵值要计算所有类别所有可能值包含的信息期望值（n是分类的数目）  </p>
-<ul>
-<li>公式2： </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">H = -\sum_&#123;i=1&#125;^n p(x_i)log_2p(x_i)</div></pre></td></tr></table></figure>
 
   </section>
 
