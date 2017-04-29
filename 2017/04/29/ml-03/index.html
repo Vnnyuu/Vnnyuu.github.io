@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      机器学习03——决策树 | Vnnyu 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Donghao Li">
+    
+    
+
+    <meta name="description" content="简述决策树是基于树结构  来进行决策的，就像带有终止块的流程图，终止块表示分类结果。– | 决策树—|—优点|计算复杂度不高，输出结果易于理解。对中间值缺失不敏感，可以处理不相关特征数据缺点|可能会产生过度匹配问题适用|数值型、标称型
+原理一颗决策树包含++一个根结点、若干内部结点、若干叶子结点++。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集合根据属性测试的结果被划分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习03——决策树 | Vnnyu">
+<meta property="og:url" content="https://vnnyu.com/2017/04/29/ml-03/index.html">
+<meta property="og:site_name" content="Vnnyu">
+<meta property="og:description" content="简述决策树是基于树结构  来进行决策的，就像带有终止块的流程图，终止块表示分类结果。– | 决策树—|—优点|计算复杂度不高，输出结果易于理解。对中间值缺失不敏感，可以处理不相关特征数据缺点|可能会产生过度匹配问题适用|数值型、标称型
+原理一颗决策树包含++一个根结点、若干内部结点、若干叶子结点++。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集合根据属性测试的结果被划分">
+<meta property="og:updated_time" content="2017-04-29T05:56:57.277Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习03——决策树 | Vnnyu">
+<meta name="twitter:description" content="简述决策树是基于树结构  来进行决策的，就像带有终止块的流程图，终止块表示分类结果。– | 决策树—|—优点|计算复杂度不高，输出结果易于理解。对中间值缺失不敏感，可以处理不相关特征数据缺点|可能会产生过度匹配问题适用|数值型、标称型
+原理一颗决策树包含++一个根结点、若干内部结点、若干叶子结点++。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集合根据属性测试的结果被划分">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Vnnyu</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          莫负好时光。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/Vnnyu" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-rweichat'></i>
+          <span class="label">WeChat</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">机器学习03——决策树</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-04-29" class="post-meta__date date">2017-04-29</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/机器学习/">机器学习</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>决策树是基于树结构  来进行决策的，就像带有终止块的流程图，终止块表示分类结果。<br>– | 决策树<br>—|—<br>优点|计算复杂度不高，输出结果易于理解。对中间值缺失不敏感，可以处理不相关特征数据<br>缺点|可能会产生过度匹配问题<br>适用|数值型、标称型</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>一颗决策树包含++一个根结点、若干内部结点、若干叶子结点++。<br><strong>叶结点对应于决策结果</strong>，其他每个结点对应一个属性测试；<br>每个结点包含的样本集合根据属性测试的结果被划分到子结点中；<br>根结点包含样本全集。<br>从根结点到每个叶结点的路径对应了一个判定测试序列。<br>决策树学习的<strong>目的</strong>是为了产生一颗泛化能力强，即处理未见示例能力强的决策树。</p>
+<h2 id="信息增益（information-gain）"><a href="#信息增益（information-gain）" class="headerlink" title="信息增益（information gain）"></a>信息增益（information gain）</h2><p>划分数据集之前之后信息发生的变化称为<strong>信息增益</strong>。<br>信息增益最高的特征就是最好的选择。<br>集合信息的度量方式为<strong>香浓熵</strong>（简称 熵 entropy）。</p>
+<h4 id="公式："><a href="#公式：" class="headerlink" title="公式："></a>公式：</h4><p>如果待分类的食物可能划分在多个分类中，定义符号$ p(x_i) $  为选择该分类的概率  </p>
+<ul>
+<li>公式1：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">l(x_i) = -log_2 p(x_i)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>计算熵值要计算所有类别所有可能值包含的信息期望值（n是分类的数目）  </p>
+<ul>
+<li>公式2： </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">H = -\sum_&#123;i=1&#125;^n p(x_i)log_2p(x_i)</div></pre></td></tr></table></figure>
+
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016-2017. | Vnnyu@vnnyu.com | Donghao Li </a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
