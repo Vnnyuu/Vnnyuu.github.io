@@ -39,7 +39,7 @@
 
 
 
-原理一颗决策树包含++一个根结点、若干内部结点、若干叶子结点++。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集">
+原理一颗决策树包含一个根结点、若干内部结点、若干叶子结点。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集合根据属">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习03——决策树 | Vnnyu">
 <meta property="og:url" content="https://vnnyu.com/2017/04/29/ml-03/index.html">
@@ -67,8 +67,8 @@
 
 
 
-原理一颗决策树包含++一个根结点、若干内部结点、若干叶子结点++。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集">
-<meta property="og:updated_time" content="2017-04-29T06:16:44.204Z">
+原理一颗决策树包含一个根结点、若干内部结点、若干叶子结点。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集合根据属">
+<meta property="og:updated_time" content="2017-04-29T08:14:56.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习03——决策树 | Vnnyu">
 <meta name="twitter:description" content="简述决策树是基于树结构  来进行决策的，就像带有终止块的流程图，终止块表示分类结果。
@@ -94,7 +94,7 @@
 
 
 
-原理一颗决策树包含++一个根结点、若干内部结点、若干叶子结点++。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集">
+原理一颗决策树包含一个根结点、若干内部结点、若干叶子结点。叶结点对应于决策结果，其他每个结点对应一个属性测试；每个结点包含的样本集合根据属">
     
     
     
@@ -304,9 +304,9 @@ classes that you can use:
 </tr>
 </tbody>
 </table>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>一颗决策树包含++一个根结点、若干内部结点、若干叶子结点++。<br><strong>叶结点对应于决策结果</strong>，其他每个结点对应一个属性测试；<br>每个结点包含的样本集合根据属性测试的结果被划分到子结点中；<br>根结点包含样本全集。<br>从根结点到每个叶结点的路径对应了一个判定测试序列。<br>决策树学习的<strong>目的</strong>是为了产生一颗泛化能力强，即处理未见示例能力强的决策树。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>一颗决策树包含<strong>一个根结点、若干内部结点、若干叶子结点</strong>。<br><strong>叶结点对应于决策结果</strong>，其他每个结点对应一个属性测试；<br>每个结点包含的样本集合根据属性测试的结果被划分到子结点中；<br>根结点包含样本全集。<br>从根结点到每个叶结点的路径对应了一个判定测试序列。<br>决策树学习的<strong>目的</strong>是为了产生一颗泛化能力强，即处理未见示例能力强的决策树。</p>
 <h2 id="信息增益（information-gain）"><a href="#信息增益（information-gain）" class="headerlink" title="信息增益（information gain）"></a>信息增益（information gain）</h2><p>划分数据集之前之后信息发生的变化称为<strong>信息增益</strong>。<br>信息增益最高的特征就是最好的选择。<br>集合信息的度量方式为<strong>香浓熵</strong>（简称 熵 entropy）。</p>
-<h4 id="公式："><a href="#公式：" class="headerlink" title="公式："></a>公式：</h4><p>如果待分类的食物可能划分在多个分类中，定义符号\( p(x_i) \)为选择该分类的概率  </p>
+<h4 id="公式："><a href="#公式：" class="headerlink" title="公式："></a>公式：</h4><p>如果待分类的事物可能划分在多个分类中，定义符号\( p(x_i) \)为选择该分类的概率  </p>
 <ul>
 <li><p>公式1:\(l(x_i) = -log_2 p(x_i)\)</p>
 </li>
